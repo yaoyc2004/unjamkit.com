@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f4ed">
+  <meta name="description" content="Create a free Wi-Fi QR code in your browser. No account, email or tracking. Your network name and password are never uploaded. Download PNG or print to PDF.">
+  <title>Wi-Fi Share | UnjamKit</title>
+  <link rel="canonical" href="https://justmakeqr.com/wifi-qr-code/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="JustMakeQR.com">
+  <meta property="og:title" content="Free Wi-Fi QR Code Generator — No Sign-Up | JustMakeQR">
+  <meta property="og:description" content="Create a free Wi-Fi QR code in your browser. No account, email or tracking. Your network name and password are never uploaded. Download PNG or print to PDF.">
+  <meta property="og:url" content="https://justmakeqr.com/wifi-qr-code/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Wi-Fi QR Code Generator — No Sign-Up | JustMakeQR">
+  <meta name="twitter:description" content="Create a free Wi-Fi QR code in your browser. No account, email or tracking. Your network name and password are never uploaded. Download PNG or print to PDF.">
+  
+  <link rel="icon" type="image/svg+xml" sizes="any" href="../favicon.svg">
+  <link rel="stylesheet" href="../qr-base.css">
+  <link rel="stylesheet" href="../wifi.css">
+  <script src="../vendor/qrcode.min.js" defer></script>
+  <script src="../qr-tool.js" defer></script>
+<link rel="stylesheet" href="../styles.css"></head>
+<body class="wifi-page qr-page" data-qr-type="wifi">
+  <header><div class="shell"><a class="brand" href="../" aria-label="UnjamKit home"><svg class="brand-icon" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="2" fill="#f3d34a"/><g stroke="currentColor" fill="none" stroke-width="3.5" stroke-linecap="square"><path d="M17 10H9v28h8M31 10h8v28h-8M17 24h15m-6-6 6 6-6 6"/></g></svg><span class="brand-text">UnjamKit</span></a><div class="header-note">SMALL FIXES. BACK TO WORK.</div><nav class="header-nav" aria-label="Main navigation"><a href="../#tools">Tools</a><a href="../#privacy">Privacy</a></nav></div></header>
+  <main class="shell"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../#tools">All tools</a><span>/</span><span aria-current="page">Wi-Fi Share</span></nav>
+    
+    <div id="top" class="intro">
+      <div class="intro-heading"><div class="eyebrow">FREE WI-FI QR CODE GENERATOR</div><h1>Wi-Fi.<br>Just <span>scan.</span></h1><p class="intro-caption">Let guests connect without typing a password.</p></div>
+      <div class="intro-copy"><p class="plain-promise">No account. No email.<br>No subscription.</p><p>Your Wi-Fi password stays in this tab.<br>We never receive it.</p>
+        <nav class="quick-links" aria-label="Page sections"><a href="#how-it-works">How it works</a><a href="#faq">FAQ</a><a href="#privacy">Privacy</a></nav>
+      </div>
+    </div>
+    <noscript><p class="notice">The QR generator needs JavaScript to create images in your browser. The instructions and answers below remain available without it.</p></noscript>
+    <div class="grid" id="qr-tool">
+      <section class="card editor" aria-label="QR code settings">
+        <h2 class="panel-heading"><span>01 / INPUT</span><b>Your network.</b></h2>
+        <div id="typePicker" hidden></div>
+        <div id="fields" class="fields"></div><div class="wifi-actions"><button id="wifiExample" class="small-button" type="button">Try an example</button><button id="clearWifi" class="small-button" type="button">Clear network details</button></div>
+        <details class="design-controls"><summary><span>Customize your QR</span><small>COLOR / FRAME / LOGO</small></summary><div class="design-body">
+        <div class="form-row"><div><label for="shape">Dot shape</label><select id="shape"><option value="square" selected>Classic squares</option><option value="rounded">Soft squares</option><option value="dots">Dots</option></select></div><div><label for="eye">Corner style</label><select id="eye"><option value="square" selected>Classic</option><option value="rounded">Rounded</option></select></div></div>
+        <div class="form-row"><div><label for="size">Download size</label><select id="size"><option value="512">512 × 512 px</option><option value="1024" selected>1024 × 1024 px</option><option value="2048">2048 × 2048 px</option></select></div></div>
+        <label class="subtle-label" id="frameLabel">Frame style</label><div id="framePicker" class="frame-picker" role="group" aria-labelledby="frameLabel">
+          <button type="button" class="frame-choice active" data-frame="none" aria-pressed="true"><span class="frame-art" aria-hidden="true"></span>Plain</button>
+          <button type="button" class="frame-choice" data-frame="outline" aria-pressed="false"><span class="frame-art" aria-hidden="true"></span>Classic</button>
+          <button type="button" class="frame-choice" data-frame="double" aria-pressed="false"><span class="frame-art" aria-hidden="true"></span>Solid base</button>
+          <button type="button" class="frame-choice" data-frame="rounded" aria-pressed="false"><span class="frame-art" aria-hidden="true"></span>Soft card</button>
+          <button type="button" class="frame-choice" data-frame="corners" aria-pressed="false"><span class="frame-art" aria-hidden="true"></span>Circle</button>
+          <button type="button" class="frame-choice" data-frame="ticket" aria-pressed="false"><span class="frame-art" aria-hidden="true"></span>Phone</button>
+          <button type="button" class="frame-choice" data-frame="caption" aria-pressed="false"><span class="frame-art" aria-hidden="true"></span>Clipboard</button>
+          <button type="button" class="frame-choice" data-frame="pill" aria-pressed="false"><span class="frame-art" aria-hidden="true"></span>Label pill</button>
+          <button type="button" class="frame-choice" data-frame="topbar" aria-pressed="false"><span class="frame-art" aria-hidden="true"></span>Ribbon</button>
+        </div><input id="frame" type="hidden" value="none">
+        <div id="captionField" class="field subtle-label" hidden><div class="field-grid"><div><label for="caption">Frame phrase</label><input id="caption" maxlength="24" value="SCAN ME" placeholder="SCAN ME"></div><div><label for="captionFont">Phrase font</label><select id="captionFont"><option value="sans">Sans-serif</option><option value="serif">Serif</option><option value="mono">Monospace</option></select></div></div></div>
+        <div class="field subtle-label"><label for="borderHex">Frame color</label><div class="color-control"><input id="borderColor" type="color" value="#181816" aria-label="Choose frame color"><input id="borderHex" type="text" value="#181816" maxlength="7" spellcheck="false" autocomplete="off" aria-label="Frame six digit hex color code"></div></div>
+        <div class="form-row"><div><label for="hex">QR color</label><div class="color-control"><input id="dark" type="color" value="#181816" aria-label="Choose QR color"><input id="hex" type="text" value="#181816" maxlength="7" spellcheck="false" autocomplete="off" aria-describedby="colorError" aria-label="Six digit hex color code"></div><p id="colorError" class="color-error" role="status"></p></div><div><label for="second">Second color</label><div class="color-control"><input id="second" type="color" value="#66645a" aria-label="Choose second color"><input id="secondHex" type="text" value="#66645A" maxlength="7" spellcheck="false" autocomplete="off" aria-label="Second six digit hex color code"></div></div></div>
+        <label class="check-line"><input id="gradient" type="checkbox"> Use gradient</label>
+        <label for="logo">Center logo (PNG, JPEG, or WebP)</label><div class="logo-row"><input id="logo" type="file" accept="image/png,image/jpeg,image/webp"><button id="clearLogo" class="small-button" type="button" hidden>Remove logo</button><span id="logoName" class="logo-name"></span></div><p class="hint">Stored only in this browser tab. A small white backing keeps it legible.</p>
+        </div></details>
+        <div class="notice"><strong>Your content stays here.</strong> Links, contact details, Wi-Fi passwords and logos are processed in this browser tab. We don’t upload them, save them on a server, or insert our own tracking link. <a href="#privacy">Read the plain-language privacy notes.</a></div>
+      </section>
+      <section class="card preview" aria-label="QR code preview"><h2 class="panel-heading preview-heading"><span>02 / OUTPUT</span><b>Your QR code.</b></h2><div class="qr-stage"><div id="qr" role="img" aria-label="Generated QR code"></div></div><div id="matrixSource" aria-hidden="true"></div><p class="encoded"><strong>Encoded content:</strong> <span id="encoded"></span></p><div class="actions"><button id="png" class="action primary" type="button" disabled>Download PNG</button><button id="pdf" class="action" type="button" disabled>Print / Save PDF</button></div><p id="status" class="status" role="status"></p><p class="download-aside">A password to share. No data to hand over.</p><p class="hint">Scan-test the finished code before printing it.</p></section>
+    </div>
+    <section class="info-section" id="how-it-works" aria-labelledby="how-title">
+      <p class="section-kicker">MAKE IT HERE. SHARE IT THERE.</p>
+      <h2 id="how-title">How to make a Wi-Fi QR code</h2>
+      <ol class="steps">
+        <li><h3>Enter your network.</h3><p>Copy the Wi-Fi name and password exactly, including capital letters and spaces. Choose WPA / WPA2 for a personal network, WEP for a legacy network, or No password for an open network. Mark Hidden network only if your router hides its name.</p></li>
+        <li><h3>Save your code.</h3><p>The QR appears as you type. Download a PNG, or select Print / Save PDF and use your browser’s print dialog. Keep the classic black code for easy scanning, or customize its frame.</p></li>
+        <li><h3>Scan. Confirm. Connect.</h3><p>On a compatible phone, open the camera or QR scanner, point it at the code and confirm the join prompt. Test the saved image with your actual network before printing it for guests.</p></li>
+      </ol>
+    </section>
+    <section class="info-section" aria-labelledby="where-title">
+      <h2 id="where-title">One less password to spell out.</h2>
+      <div class="use-cases">
+        <div><h3>At home.</h3><p>Keep a small card for visitors. Use a guest network if you want to share internet access separately from your main network.</p></div>
+        <div><h3>At the counter.</h3><p>Put your guest Wi-Fi code where customers can scan it. No sign-up page or JustMakeQR redirect gets in the way.</p></div>
+        <div><h3>In a guest room.</h3><p>Add the code to a welcome card. If you change the Wi-Fi name or password, make a new code and replace the old card.</p></div>
+      </div>
+    </section>
+    <section class="info-section" id="faq" aria-labelledby="faq-title">
+      <p class="section-kicker">PLAIN ANSWERS.</p><h2 id="faq-title">Wi-Fi QR code questions</h2>
+      <div class="faq-list">
+        <details open><summary>Do you store my Wi-Fi password?</summary><p>No. The network name and password are processed in this browser tab and never uploaded to JustMakeQR. We use no visitor analytics, tracking cookies or browser storage for these details. Your browser may retain form state according to its own settings.</p></details>
+        <details><summary>Can someone read the password from the QR code?</summary><p>Yes. The Wi-Fi QR contains the network name and, for a protected network, its password. It is an easy way to share access, not encryption. Anyone with the image can decode it. Share a guest network rather than a private network where appropriate.</p></details>
+        <details><summary>Will it work on iPhone and Android?</summary><p>Many current iPhone and Android camera or QR-scanner apps recognize Wi-Fi codes and offer a join prompt. Support depends on the phone, scanner and network settings. If you only see text, try the phone’s built-in QR scanner. Always test with the phones your guests use.</p></details>
+        <details><summary>What security option should I choose?</summary><p>Use WPA / WPA2 (personal) for networks with a shared password, WEP for a legacy WEP network, or No password for an open network. This tool does not configure enterprise networks with individual logins or certificates. WPA3-only networks may need another sharing method; compatibility depends on your device and router.</p></details>
+        <details><summary>Does the code expire?</summary><p>JustMakeQR sets no expiry date and requires no subscription. The code works only while the encoded Wi-Fi name, password and network settings remain valid. Change those details and you need a new QR image.</p></details>
+        <details><summary>Can I create a QR for a hidden network?</summary><p>Yes. Check Hidden network to include the hidden-network flag. Your device must support that flag and be within range of the network. If joining fails, confirm your router settings and test another compatible scanner.</p></details>
+        <details><summary>Why does scanning fail to connect?</summary><p>Check the exact network name, password, security type and hidden-network setting. Spaces count. Make sure the network is in range and that the phone supports it. For printed codes, keep a clear white margin and high contrast. Some networks also require a separate web login after connecting.</p></details>
+        <details><summary>Can I print a Wi-Fi sign or download a PDF?</summary><p>Yes. Download PNG saves the QR image. Print / Save PDF opens your browser’s print dialog, where you can select Save as PDF. Add a frame or caption under Customize your QR, then scan-test the finished design at its printed size.</p></details>
+      </div>
+      <p class="source-note">Uses the <a href="https://github.com/zxing/zxing/wiki/Barcode-Contents#wi-fi-network-config-android-ios-11" target="_blank" rel="noopener noreferrer">Wi-Fi QR format documented by ZXing</a>. For other content, use the <a href="../qr-code/">general QR code generator</a>.</p>
+    </section>
+    <section class="info-section privacy-section" id="privacy" aria-labelledby="privacy-title">
+      <h2 id="privacy-title">What stays private</h2>
+      <p><strong>Your QR content is not our data.</strong> We don’t upload or store the text, URLs, contact details, Wi-Fi passwords or logos you enter. The generator runs in your browser, with temporary working state in this tab. There is no account database or saved-code dashboard.</p>
+      <p><strong>No visitor tracking in this page.</strong> We don’t use Google Analytics, advertising pixels, tracking cookies or browser storage to record your activity. The QR library is served with the site rather than loaded from a third-party CDN.</p>
+      <p><strong>The hosting boundary.</strong> The hosting provider serves this website and may retain standard request logs, including IP addresses, as part of operating the service. That is separate from your QR content, which the tool does not transmit. Your browser may also retain history, downloads or form state according to its own settings.</p>
+      <p><strong>The code is meant to be read.</strong> Anyone who can scan your QR code can read what is encoded in it. A linked website or service has its own privacy practices. Don’t put secrets in a QR code you plan to share publicly.</p>
+      <p class="source-note"><a href="https://github.com/yaoyc2004/justmakeqr.com" rel="noopener noreferrer" target="_blank">View the source code</a> · <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener noreferrer" target="_blank">GitHub’s privacy statement</a></p>
+    </section>
+  </main>
+  <footer class="shell"><strong>UnjamKit</strong><span>Use it. Take it. That’s it.</span><a href="../#tools">All tools</a><a href="https://justmakeqr.com/">JustMakeQR ↗</a></footer>
+  <div id="printSheet"><img id="printQr" alt="Printable QR code"><div id="printLabel"></div></div>
+</body>
+</html>
+

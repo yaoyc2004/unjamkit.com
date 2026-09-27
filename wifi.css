@@ -1,0 +1,8 @@
+.wifi-page main{padding-top:24px}
+.wifi-page .breadcrumb{margin:0 0 12px;color:var(--muted)}
+.wifi-page h1{font-size:clamp(42px,5.2vw,62px);line-height:1.04;margin-top:13px}
+.wifi-page .fields{margin:0;padding:0;border:0}
+.wifi-page .wifi-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.wifi-page .intro{margin-bottom:24px}
+.wifi-page .qr-stage{min-height:316px}
+.wifi-page input:disabled{opacity:.5}

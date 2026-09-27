@@ -1,0 +1,7 @@
+export const $=id=>document.getElementById(id);
+export function message(id,text,error=false){const node=$(id);node.textContent=text;node.classList.toggle('error',error);}
+export function download(blob,name){const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;a.hidden=true;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);}
+export async function copy(text,statusId){try{await navigator.clipboard.writeText(text);message(statusId,'Copied. Yours to take.');}catch{message(statusId,'Clipboard access is unavailable. Select the result and copy it, or download the text.',true);}}
+export const kb=bytes=>(bytes/1024).toFixed(1)+' KB';
+const search=$('tool-search');
+if(search){let category='all';const cards=[...document.querySelectorAll('.tool-card')];const filters=[...document.querySelectorAll('.filter')];const update=()=>{const query=search.value.trim().toLowerCase();let shown=0;for(const card of cards){card.hidden=!((category==='all'||card.dataset.category===category)&&card.textContent.toLowerCase().includes(query));if(!card.hidden)shown++;}$('tool-count').textContent=shown+' tools';$('no-tools').hidden=shown>0;};search.addEventListener('input',update);filters.forEach(button=>button.addEventListener('click',()=>{category=button.dataset.category;filters.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));update();}));}
