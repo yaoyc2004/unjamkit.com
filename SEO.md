@@ -1,6 +1,6 @@
 # UnjamKit search visibility
 
-This change improves the existing homepage and all six tool pages. It targets concrete tasks while preserving the static architecture and the paper/ink/yellow design. No tracking, backend, new tool functionality or ranking guarantees are introduced.
+This change improves the existing homepage and all six tool pages. It targets concrete tasks while preserving the static architecture and the paper/ink/yellow design. No backend, new tool functionality or ranking guarantees are introduced by the SEO changes. Basic visit statistics were separately added in PR #3; this preview preserves them and the updated privacy disclosure.
 
 ## Page intent
 
