@@ -19,7 +19,7 @@ Serve this directory with any static HTTP server. For example:
 
 Then open http://127.0.0.1:8768/ . Use HTTP rather than opening HTML directly, because browsers restrict ES modules and PDF workers on file URLs.
 
-No build step, account system, backend, browser storage, external font, analytics or file upload is used. The server serves static files only. PDF libraries, worker, fonts and decoding resources are vendored locally. Clipboard access and downloads follow the browser's permissions and settings.
+No build step, account system, backend, external font or file upload is used. Tool content is not stored in browser storage. Basic Google Analytics visit statistics use first-party cookies; see [ANALYTICS.md](ANALYTICS.md) for the separate UnjamKit property and data boundaries. The server serves static files only. PDF libraries, worker, fonts and decoding resources are vendored locally. Clipboard access and downloads follow the browser's permissions and settings.
 
 QR and Wi-Fi QR reuse the existing [JustMakeQR](https://justmakeqr.com/) implementation. Their canonicals still point to the independent public JustMakeQR pages. The collection's custom domain is not configured yet; homepage canonical, social URLs and sitemap should be set when it is connected. There is no CNAME file. The .nojekyll file allows the site to be served without a Jekyll build if GitHub Pages is enabled later.
 
