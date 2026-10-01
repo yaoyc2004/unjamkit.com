@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#f6f4ed">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>CSV to Excel Without Losing Leading Zeros | UnjamKit</title>
+  <meta name="description" content="Excel can save CSV as XLSX, but may drop leading zeros when opening the CSV first. Convert the original file to a checked, text-typed Excel workbook in your browser.">
+  <link rel="canonical" href="https://unjamkit.com/csv-to-excel/">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="UnjamKit">
+  <meta property="og:title" content="CSV to Excel Without Losing Leading Zeros | UnjamKit">
+  <meta property="og:description" content="Saving a CSV as XLSX cannot restore IDs Excel already changed. Convert the original CSV to a checked workbook with text cells before opening it in Excel.">
+  <meta property="og:url" content="https://unjamkit.com/csv-to-excel/">
+  <meta property="og:image" content="https://unjamkit.com/social-card.png?v=paperclip">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CSV to Excel Without Losing Leading Zeros | UnjamKit">
+  <meta name="twitter:description" content="Convert the original CSV before Excel changes its IDs. Checked XLSX, text cells, all in your browser.">
+  <meta name="twitter:image" content="https://unjamkit.com/social-card.png?v=paperclip">
+  <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96.png">
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../seo.css">
+  <link rel="stylesheet" href="../csv-excel.css?v=explain-save-as">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://unjamkit.com/csv-to-excel/#webpage","url":"https://unjamkit.com/csv-to-excel/","name":"CSV to Excel Without Losing Leading Zeros | UnjamKit","description":"Convert an original CSV to a checked Excel workbook with text cells before Excel can reinterpret identifiers.","inLanguage":"en","isPartOf":{"@id":"https://unjamkit.com/#website"},"breadcrumb":{"@id":"https://unjamkit.com/csv-to-excel/#breadcrumb"},"mainEntity":{"@id":"https://unjamkit.com/csv-to-excel/#app"}},{"@type":"BreadcrumbList","@id":"https://unjamkit.com/csv-to-excel/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"UnjamKit","item":"https://unjamkit.com/"},{"@type":"ListItem","position":2,"name":"CSV to Excel","item":"https://unjamkit.com/csv-to-excel/"}]},{"@type":"WebApplication","@id":"https://unjamkit.com/csv-to-excel/#app","name":"CSV to Excel","url":"https://unjamkit.com/csv-to-excel/","description":"Convert an original UTF-8 CSV to a checked XLSX with every field stored as text, preserving leading zeros and long identifiers. Processing runs in the browser without uploading the file.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any OS with a modern web browser","browserRequirements":"Requires JavaScript and a modern browser","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"isPartOf":{"@id":"https://unjamkit.com/#website"}}]}</script>
+</head>
+<body class="tool-page" data-tool="csv-to-excel">
+<header><div class="shell"><a class="brand" href="../" aria-label="UnjamKit home"><svg class="brand-icon" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="4" fill="#f3d34a"/><path d="M79 22 64 38V67C64 88 31 88 31 67V31C31 10 57 10 57 31V64C57 74 44 74 44 64V34" fill="none" stroke="currentColor" stroke-width="6.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="brand-text">UnjamKit</span></a><div class="header-note">SMALL FIXES. BACK TO WORK.</div><nav class="header-nav" aria-label="Main navigation"><a href="../#tools">Tools</a><a href="#privacy">Privacy</a></nav></div></header>
+<main class="shell">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../#tools">All tools</a><span>/</span><span aria-current="page">CSV to Excel</span></nav>
+  <section class="hero">
+    <div><div class="eyebrow">CSV TO EXCEL / FREE BROWSER TOOL</div><h1>CSV to Excel.<br><mark>Keep every ID.</mark></h1><p>Excel can save a CSV as XLSX. But if opening the CSV changes <strong>00123</strong> to <strong>123</strong>, Save As keeps the changed value. Convert the original CSV here first, with every field stored as text.</p></div>
+    <aside class="promise"><strong>No account. No upload.<br>No saved data.</strong><p>Your file stays in this tab. Convert it,<br>check it, then take the result.</p><a class="micro" href="#privacy">How your data stays yours ↗</a></aside>
+  </section>
+  <section class="csv-why" aria-labelledby="csv-why-title">
+    <div><div class="micro">THE CHANGE HAPPENS WHEN THE CSV OPENS</div><h2 id="csv-why-title">Save As cannot bring lost digits back.</h2><p>Double-clicking a CSV can make Excel interpret identifiers as numbers. This tool creates the XLSX directly from the original CSV, before Excel gets to interpret it.</p></div>
+    <div class="csv-why-flow" aria-label="Example of a changed identifier"><span><small>ORIGINAL CSV</small><b>00123</b></span><i aria-hidden="true">→</i><span><small>OPENED AS A NUMBER</small><b>123</b></span><i aria-hidden="true">→</i><span><small>SAVED XLSX</small><b>123</b></span></div>
+    <p class="csv-why-alt">Already using Excel’s <strong>Data → From Text/CSV</strong> and setting ID columns to Text? That works too. This page makes a text-typed workbook to hand over without asking the recipient to repeat those steps.</p>
+  </section>
+  <noscript><p class="notice">This tool needs JavaScript to process your CSV locally in the browser.</p></noscript>
+  <div class="workspace csv-workspace" id="csv-workspace">
+    <section class="panel">
+      <h2 class="panel-heading"><span>01 / INPUT</span><b>Your original CSV.</b></h2>
+      <div class="csv-drop" id="csv-drop">
+        <svg class="csv-file-icon" viewBox="0 0 40 46" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path fill="#f3d34a" d="M6 1h19l9 9v35H6z"/><path d="M25 1v10h9M12 20h16M12 26h16M12 32h16M19 17v19"/></svg>
+        <strong>Drop a CSV. Keep the details.</strong>
+        <p>Start with the original export,<br>before a spreadsheet changes your IDs.</p>
+        <button class="btn primary" id="csv-choose" type="button">Choose CSV file</button>
+        <input id="csv-file" type="file" accept=".csv,text/csv" hidden aria-label="Choose CSV file">
+        <p class="hint">UTF-8 CSV · up to 10 MB · one file at a time</p>
+      </div>
+      <p id="csv-file-name" class="csv-file"></p>
+      <div class="actions-row"><button class="btn small" id="csv-example" type="button">Try an example</button><button class="btn small" id="csv-clear" type="button" disabled>Clear file</button></div>
+      <div class="csv-options">
+        <div><label class="field-label" for="csv-delimiter">Separator</label><select class="input" id="csv-delimiter" autocomplete="off"><option value="">Auto-detect</option><option value=",">Comma (,)</option><option value=";">Semicolon (;)</option><option value="&#9;">Tab</option><option value="|">Pipe (|)</option></select></div>
+        <label class="check"><input type="checkbox" id="csv-header" autocomplete="off" checked>First row is a header</label>
+      </div>
+      <div class="csv-rule"><strong>Every column stays as text.</strong><p>IDs, dates, prices and quantities keep their original text. This version does not convert values for calculations.</p></div>
+      <p class="notice"><strong>Already missing digits?</strong> Check the original CSV. This tool preserves the values it contains; it cannot restore digits lost in an earlier export or save.</p>
+    </section>
+    <section class="panel csv-output">
+      <h2 class="panel-heading"><span>02 / OUTPUT</span><b>Ready for Excel.</b><span class="csv-text-badge">TEXT, INTACT</span></h2>
+      <div id="csv-idle" class="csv-idle">
+        <p>A workbook that keeps the small details.<br>Here’s what stays the same:</p>
+        <div class="csv-demo-row"><span>00123</span><i aria-label="becomes">→</i><span>00123</span></div>
+        <div class="csv-demo-row"><span>123456789012345678</span><i aria-label="becomes">→</i><span>123456789012345678</span></div>
+        <div class="csv-demo-row"><span>1E10</span><i aria-label="becomes">→</i><span>1E10</span></div>
+        <p class="csv-empty-note">ILLUSTRATION ONLY / Choose a file or try the example.</p>
+      </div>
+      <div id="csv-preview" hidden>
+        <div class="csv-metrics"><div><strong id="csv-records">0</strong><span>DATA RECORDS</span></div><div><strong id="csv-columns">0</strong><span>COLUMNS</span></div><div><strong id="csv-flagged">0</strong><span>VALUES FLAGGED</span></div></div>
+        <p id="csv-separator-note" class="hint"></p>
+        <div class="csv-risk-list" id="csv-risks" aria-label="Values that may be reinterpreted by spreadsheets"></div>
+        <div class="csv-table-scroll" tabindex="0" role="region" aria-label="Original CSV preview; scroll to see more columns"><table class="csv-table" id="csv-table" aria-label="Original CSV field text"></table></div>
+        <p class="hint" id="csv-preview-note"></p>
+      </div>
+      <div class="csv-export-row">
+        <label class="check"><input type="checkbox" id="csv-notes" autocomplete="off" checked>Include a conversion notes sheet</label>
+        <p class="hint">Record counts, text rules and handover notes in the same workbook.</p>
+        <div class="actions-row"><button class="btn primary" id="csv-build" type="button" disabled>Create Excel file <span aria-hidden="true">↗</span></button><a class="btn primary" id="csv-download" hidden download>Download XLSX <span aria-hidden="true">↓</span></a></div>
+        <div id="csv-verified" class="csv-ready" hidden></div>
+        <p id="csv-status" class="feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+        <p class="hint">Before download, the workbook is read back and every data cell is checked against your CSV.</p>
+      </div>
+    </section>
+  </div>
+  <div class="plain-strip"><span>CSV → XLSX</span><span>Processed on your device</span><span>No sign-up. No detour.</span></div>
+  <section class="info-section"><h2>Small details. Big difference.</h2><div class="csv-examples"><div><h3>Keep the leading zeros.</h3><code>00123</code><p>SKUs, postal codes and account references stay as written, without adding or guessing digits.</p></div><div><h3>Keep every digit.</h3><code>123456789012345678</code><p>Long identifiers are stored as text, so Excel does not need to turn them into rounded numbers.</p></div><div><h3>Keep codes as codes.</h3><code>1E10 · 03-04 · =1+1</code><p>Scientific-notation-like, date-like and formula-like values stay literal text in the workbook.</p></div></div></section>
+  <section class="info-section" id="how-to-use"><h2>Three steps. One checked workbook.</h2><div class="steps"><div><span class="step-number">01</span><h3>Choose the original export.</h3><p>Use a UTF-8 CSV from the source system, before opening and resaving it in Excel. If the CSV itself has already lost digits, get a fresh export.</p></div><div><span class="step-number">02</span><h3>Check the preview.</h3><p>Confirm the separator and whether the first row is a header. Every column is kept as text, including prices and quantities.</p></div><div><span class="step-number">03</span><h3>Create it. Hand it over.</h3><p>Download the checked XLSX. The recipient can open it directly; the optional notes sheet explains how its values were preserved.</p></div></div></section>
+  <section class="info-section seo-section" id="faq"><h2>CSV to Excel questions, answered.</h2><div class="seo-faq">
+    <details><summary>Can’t I open a CSV in Excel and save it as an XLSX?</summary><p>Yes, if Excel imports the identifier columns as Text first. If Excel already turned 00123 into 123 when opening the CSV, Save As stores 123; it cannot recover the lost zero. This tool reads the original CSV as text and creates an XLSX with explicit text cells before Excel opens it.</p></details>
+    <details><summary>Why does Excel remove leading zeros from CSV files?</summary><p>CSV files do not carry spreadsheet cell types. When a spreadsheet interprets a field as a number, it may remove leading zeros or change long identifiers. This tool writes an XLSX with explicit text cells so the field text is preserved on opening.</p></details>
+    <details><summary>Can I calculate with the prices and quantities?</summary><p>All values are text in this version. Convert only the columns you need for arithmetic in Excel, after checking their decimal and thousands separators. Keep identifier columns as text.</p></details>
+    <details><summary>What exactly does the check verify?</summary><p>The generated workbook is read back in your browser. Every cell in the Data sheet is checked for the same text, text cell type and position as the parsed CSV; formula cells are not permitted. This checks the conversion, not whether the source data was already damaged.</p></details>
+    <details><summary>What happens to blank lines, spaces and repeated headers?</summary><p>Spaces, repeated header names, record order and line breaks inside quoted fields are preserved. Blank records stay as blank rows; one final line ending is treated as the end of the last record. The header setting changes the preview and counts, not the content of the Data sheet. No header is invented when the setting is off.</p></details>
+    <details><summary>Which files are supported?</summary><p>One UTF-8 CSV, with or without a UTF-8 BOM, up to 10 MB. Comma, semicolon, tab and pipe separators are supported. Limits are 50,000 data records plus an optional header, 256 columns, 250,000 total cells and 32,767 characters per cell. Files with invalid quoting, inconsistent field counts, unsupported control characters, ambiguous Excel escape-shaped text or a different encoding are rejected instead of silently changed.</p></details>
+    <details><summary>Will identifiers stay intact if I save it as CSV again?</summary><p>The downloaded XLSX stores text cell types. A CSV does not. Opening a later CSV export or converting these cells to numbers can change the values again. Hand over the XLSX and keep identifiers as text.</p></details>
+  </div></section>
+  <section class="info-section" id="privacy"><h2>Your file stays with you.</h2><div class="privacy-grid"><div><h3>All processing happens in this tab.</h3><p>Your CSV is read, converted and checked on your device. This page does not upload file contents, call an AI service, or load analytics or advertising scripts.</p></div><div><h3>Nothing saved by the tool.</h3><p>No account, cookies, localStorage or IndexedDB copy is created by this page. Clear file discards its working data and generated download; leaving the page also clears the working state.</p></div></div><p class="hint">Your browser may keep history or downloads according to its settings. The hosting provider may log page and static-file requests. A downloaded workbook remains wherever you save it. Other UnjamKit pages have the <a href="../#privacy">site’s visit-statistics policy</a>.</p></section>
+  <section class="info-section seo-section"><h2>Another small fix?</h2><nav class="seo-related" aria-label="Related tools"><a href="../list-match/">Compare IDs from two lists <span aria-hidden="true">↗</span></a><a href="../clean-copy/">Remove line breaks from copied PDF text <span aria-hidden="true">↗</span></a></nav></section>
+</main>
+<footer class="shell"><strong>UnjamKit</strong><span>Use it. Take it. That’s it.</span><a href="../#tools">All tools</a><a href="https://justmakeqr.com/">JustMakeQR ↗</a></footer>
+<script type="module" src="../csv-excel.mjs"></script>
+</body></html>

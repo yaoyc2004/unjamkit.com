@@ -1,5 +1,7 @@
 # Preview validation
 
+CSV to Excel was added locally on 2026-09-30. Its current checks and remaining release checks are documented in [CSV-EXCEL.md](CSV-EXCEL.md); the original six-tool checks below predate this addition.
+
 - Homepage: category filtering, search and empty-result state checked in the browser.
 - Clean Copy: browser example, paragraph preservation, clipboard copy and clear state checked. Core tests cover CRLF, Unicode, spaces, hyphen joins, literal markup and empty input.
 - List Match: browser shared and only-A groups checked. Core tests cover deduplication, case settings, whitespace settings, leading-zero IDs and empty lists.

@@ -10,6 +10,7 @@ Free browser tools for everyday office snags. Small fixes. Back to work.
 | List Match | Find common and missing items in two lists |
 | JustMakeQR | Create static QR codes with direct destinations |
 | Wi-Fi Share | Create Wi-Fi QR codes for guests |
+| CSV to Excel | Preserve CSV identifiers as explicit text in a checked XLSX |
 
 This is the initial beta version. See [VALIDATION.md](VALIDATION.md) for checks and compatibility boundaries.
 
@@ -30,3 +31,5 @@ PDF Stack: standard unlocked PDFs, 30 MB per file / 60 MB total / 150 pages. For
 The privacy statements describe this version. Any future analytics, advertising or hosting change requires reviewing them against actual behavior.
 
 
+
+CSV to Excel: UTF-8 CSV up to 10 MB, 50,000 data records plus an optional header, 256 columns, 250,000 cells and 32,767 characters per cell. All cells remain text, including amounts. Parsing, XLSX writing and full readback verification run in a local worker. No tool data is uploaded or stored. This page intentionally does not load analytics; its document CSP blocks connections. See CSV-EXCEL.md for behavior and validation.
