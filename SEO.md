@@ -1,5 +1,9 @@
 # UnjamKit search visibility
 
+## CSV to Excel addition (local, 2026-09-30)
+
+`/csv-to-excel/` targets "CSV to Excel without losing leading zeros" and related searches about long IDs and SKU values changing when Excel opens a CSV. Its visible introduction and first FAQ explain the key timing: Excel can save a CSV as XLSX, but Save As cannot restore an identifier already changed during CSV import. The page also names Excel's built-in Text import as a valid alternative and limits this tool's promise to preserving values present in the original CSV. The title, description, social metadata, H1, homepage card and WebApplication schema reflect that same behavior. This addition has not yet been published.
+
 This change improves the existing homepage and all six tool pages. It targets concrete tasks while preserving the static architecture and the paper/ink/yellow design. No backend, new tool functionality or ranking guarantees are introduced by the SEO changes. Basic visit statistics were separately added in PR #3; this preview preserves them and the updated privacy disclosure.
 
 ## Page intent
