@@ -8,3 +8,7 @@ header{border-bottom:1px solid var(--ink)}header .shell{min-height:76px;display:
 .hero h1{line-height:1.13}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 @media print{header,.breadcrumb,.controls,.actions-row,footer,.choose-file,.pdf-toolbar{display:none!important}body{background:#fff}.shell{width:100%}.workspace{display:block}.panel+.panel{border-left:0}.text-box{border:0}}
+
+.contact-invitation{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-bottom:4px}.contact-invitation h2{margin:8px 0}.contact-invitation p{margin:0}.contact-invitation .actions-row{margin:0;flex-shrink:0}
+@media(max-width:720px){.contact-invitation{align-items:flex-start;flex-direction:column;gap:16px}}
+@media(max-width:360px){header .shell{flex-wrap:wrap;padding-top:12px;padding-bottom:12px}.header-nav{gap:10px}}
