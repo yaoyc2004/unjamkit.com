@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#f6f4ed">
+  <title>Contact Us / Request a Tool | UnjamKit</title>
+  <meta name="description" content="Have a question or an office task that needs a better tool? Send UnjamKit a message or suggest a tool.">
+  <link rel="canonical" href="https://unjamkit.com/contact/">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../contact.css">
+  <script type="module" src="../contact.mjs"></script>
+</head>
+<body class="contact-page">
+  <header><div class="shell">
+    <a class="brand" href="../" aria-label="UnjamKit home"><svg class="brand-icon" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="4" fill="#f3d34a"/><path d="M79 22 64 38V67C64 88 31 88 31 67V31C31 10 57 10 57 31V64C57 74 44 74 44 64V34" fill="none" stroke="currentColor" stroke-width="6.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="brand-text">UnjamKit</span></a>
+    <div class="header-note">SMALL FIXES. BACK TO WORK.</div>
+    <nav class="header-nav" aria-label="Main navigation"><a href="../#tools">All tools</a><a href="../#privacy">Privacy</a></nav>
+  </div></header>
+  <main class="shell">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../">Home</a><span aria-hidden="true">/</span><span aria-current="page">Contact</span></nav>
+    <div class="contact-layout">
+      <section class="contact-intro" aria-labelledby="contact-title">
+        <div class="eyebrow">A QUESTION. AN IDEA. A SMALL FIX.</div>
+        <h1 id="contact-title">Let’s make<br><mark>work easier.</mark></h1>
+        <p>Something not working? A tool you wish existed? Tell us what’s getting in the way.</p>
+        <div class="contact-tip"><span class="micro">REQUESTING A TOOL?</span><p>Describe the task, what you start with, and the result you need. A simple example helps.</p></div>
+        <a class="micro" href="../#tools">← Explore the tools</a>
+      </section>
+      <section class="contact-panel" aria-labelledby="form-title">
+        <h2 id="form-title">Contact us / Request a tool</h2>
+        <p class="contact-subtitle">A few details are all we need.</p>
+        <form id="contact-form" method="post">
+          <fieldset id="contact-fields" disabled>
+            <div class="contact-field"><label class="field-label" for="topic">What’s on your mind?</label><select class="input" id="topic" name="topic" required><option value="contact">Contact us</option><option value="tool-request">Request a tool</option><option value="bug-report">Report a problem</option></select></div>
+            <div class="form-grid">
+              <div><label class="field-label" for="name">Name <span>(optional)</span></label><input class="input" id="name" name="name" autocomplete="name" maxlength="100"></div>
+              <div><label class="field-label" for="email">Your email <span>(optional)</span></label><input class="input" type="email" id="email" name="email" autocomplete="email" maxlength="254" aria-describedby="email-hint"><p class="hint" id="email-hint">Add it if you’d like a reply.</p></div>
+            </div>
+            <div class="contact-field"><label class="field-label" for="message" id="message-label">Your message</label><textarea class="text-box" id="message" name="message" required maxlength="5000" rows="7" placeholder="How can we help?" aria-describedby="message-hint"></textarea><p class="hint" id="message-hint">Please leave out passwords, confidential information and private file contents.</p></div>
+            <div class="contact-trap" aria-hidden="true"><label for="company-website">Leave this field empty</label><input id="company-website" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+            <p class="hint contact-privacy">When you submit, your message and any contact details are sent to UnjamKit through Formspree so we can review them. They may be retained to handle your request. <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Formspree privacy policy</a>.</p>
+            <button class="btn primary" id="contact-submit" type="submit">Send message <span aria-hidden="true">↗</span></button>
+          </fieldset>
+        </form>
+        <p id="contact-status" class="feedback" role="status" aria-live="polite" aria-atomic="true">If the form does not load, please enable JavaScript and refresh this page.</p>
+        <noscript><p class="notice">Please enable JavaScript to use this form.</p></noscript>
+      </section>
+    </div>
+  </main>
+  <footer class="shell"><strong>UnjamKit</strong><span>Small fixes. Back to work.</span><a href="../#tools">All tools</a></footer>
+</body>
+</html>

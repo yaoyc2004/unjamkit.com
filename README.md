@@ -33,3 +33,6 @@ The privacy statements describe this version. Any future analytics, advertising 
 
 
 CSV to Excel: UTF-8 CSV up to 10 MB, 50,000 data records plus an optional header, 256 columns, 250,000 cells and 32,767 characters per cell. All cells remain text, including amounts. Parsing, XLSX writing and full readback verification run in a local worker. No tool data is uploaded or stored. This page intentionally does not load analytics; its document CSP blocks connections. See CSV-EXCEL.md for behavior and validation.
+
+
+Contact and tool requests: the contact page uses a separately configured form service. It sends the visitor's message and optional contact details; tool processing remains unchanged. Receiving-service setup is required before publishing the form. See [CONTACT.md](CONTACT.md).
