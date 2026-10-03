@@ -10,6 +10,10 @@ Page: `/ppt-notes/`. For local preview, serve the repository over HTTP, then ope
 - The review list filters by changed notes, status or attention flags. Attention flags include uncertain matches, empty notes, duplicate notes, changed slide text with unchanged notes, and user-specified old terms. The text diff is inline or side by side. Whitespace-only changes may be ignored.
 - HTML checklist contains the full updated script and, in compare mode, note differences. Its checkboxes are printable but are not persisted. The text recording script contains only slides marked Record. All-notes export contains every updated page. The JSON project contains extracted slide body text and notes, matches and decisions and can be imported to resume. Reading mode shows slides marked Record and allows marking them Done. The reading-time estimate uses a user-provided non-space character rate.
 
+## Guide and practice files
+
+`ppt-notes/guide/` holds a 19-page English PDF user guide and two fictional practice decks (`training-deck-v1.pptx`, 5 slides; `training-deck-v2.pptx`, 7 slides, with edited notes, a new slide, a moved slide, an empty note and a repeated note). The page links them in a "First time?" strip under the input buttons and in the "Learn it with a practice run" section (`#guide`, also in the header nav). They are plain static downloads; nothing is fetched by the tool itself. If the page's controls change, retake the guide's screenshots so it still matches.
+
 ## Boundaries
 
 - Standard `.pptx` only: maximum 30 MB and 500 slides per input. ZIP64, split ZIP, encryption and unsupported compression are rejected. XML parts are capped at 4 MB. No file data leaves the page.
