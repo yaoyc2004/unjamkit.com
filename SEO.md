@@ -4,6 +4,8 @@
 
 `/ppt-notes/` is a browser-only page for comparing PowerPoint speaker notes and preparing a recording checklist, with one-deck notes export as a second entry. The homepage links to it, and the canonical page is included in the sitemap. The visible page names matching uncertainty, file limits and the difference between a text change and a rerecording decision.
 
+Main intent: "compare PowerPoint speaker notes" (two versions of a PPTX). Secondary: "extract speaker notes from PPTX", rerecording a narrated course after slide updates, finding outdated wording in notes. The H1, title, description, Open Graph/Twitter metadata and homepage card use that wording. Visible content adds use cases, an eight-question FAQ (comparison, moved slides, one-deck extraction, rerecording decisions, privacy, Google Slides/Keynote/.ppt conversion, non-Latin scripts, scope limits) and related tool links. JSON-LD adds WebPage, BreadcrumbList and a free WebApplication with a feature list matching the visible controls, plus the user guide PDF as `subjectOf`. FAQ content is visible HTML only; no FAQPage markup is used, since Google limits that rich result to authoritative government and health sites. The practice decks and guide in `ppt-notes/guide/` are linked from the page and need no sitemap entry.
+
 ## CSV to Excel addition (local, 2026-09-30)
 
 `/csv-to-excel/` targets "CSV to Excel without losing leading zeros" and related searches about long IDs and SKU values changing when Excel opens a CSV. Its visible introduction and first FAQ explain the key timing: Excel can save a CSV as XLSX, but Save As cannot restore an identifier already changed during CSV import. The page also names Excel's built-in Text import as a valid alternative and limits this tool's promise to preserving values present in the original CSV. The title, description, social metadata, H1, homepage card and WebApplication schema reflect that same behavior. This addition has not yet been published.
@@ -45,7 +47,7 @@ Clean Copy does not extract PDF text or run OCR. Image Fit outputs JPEG, loses t
 
 ## Validation
 
-The local audit verifies all seven pages: unique title/H1/canonical, descriptions/social metadata, parseable JSON-LD, correct breadcrumb URLs, unchanged tool controls, existing local resources and fragment links, sitemap-to-canonical consistency and robots.txt. All seven pages were inspected at a 390px mobile viewport with no horizontal overflow. Desktop homepage and Image Fit layouts were visually inspected; browser console checks found no errors. The social image was visually checked. The tool logic files are unchanged.
+The local audit verifies all seven pages (and, since 2026-10-03, `/ppt-notes/`): unique title/H1/canonical, descriptions/social metadata, parseable JSON-LD, correct breadcrumb URLs, unchanged tool controls, existing local resources and fragment links, sitemap-to-canonical consistency and robots.txt. All seven pages were inspected at a 390px mobile viewport with no horizontal overflow. Desktop homepage and Image Fit layouts were visually inspected; browser console checks found no errors. The social image was visually checked. The tool logic files are unchanged.
 
 ## After deployment
 
