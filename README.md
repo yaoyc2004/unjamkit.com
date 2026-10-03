@@ -11,6 +11,7 @@ Free browser tools for everyday office snags. Small fixes. Back to work.
 | JustMakeQR | Create static QR codes with direct destinations |
 | Wi-Fi Share | Create Wi-Fi QR codes for guests |
 | CSV to Excel | Preserve CSV identifiers as explicit text in a checked XLSX |
+| PPT Notes Compare | Compare PPTX speaker notes and make a recording checklist |
 
 This is the initial beta version. See [VALIDATION.md](VALIDATION.md) for checks and compatibility boundaries.
 
@@ -33,6 +34,8 @@ The privacy statements describe this version. Any future analytics, advertising 
 
 
 CSV to Excel: UTF-8 CSV up to 10 MB, 50,000 data records plus an optional header, 256 columns, 250,000 cells and 32,767 characters per cell. All cells remain text, including amounts. Parsing, XLSX writing and full readback verification run in a local worker. No tool data is uploaded or stored. This page intentionally does not load analytics; its document CSP blocks connections. See CSV-EXCEL.md for behavior and validation.
+
+PPT Notes Compare: one or two standard PPTX files up to 30 MB and 500 slides each. It extracts standard speaker-note placeholders, compares notes, offers manual slide pairing and review decisions, checks blank/repeated notes and chosen old terms, and exports a local HTML checklist, text scripts or a JSON project for manual resume. It does not render slide visuals or compare media. This page intentionally does not load analytics; its document CSP blocks connections. See PPT-NOTES.md for behavior and validation.
 
 
 Contact and tool requests: the contact page uses a separately configured form service. It sends the visitor's message and optional contact details; tool processing remains unchanged. Receiving-service setup is required before publishing the form. See [CONTACT.md](CONTACT.md).

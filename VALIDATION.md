@@ -1,5 +1,7 @@
 # Preview validation
 
+PPT Notes Compare was validated locally on 2026-10-03. The browser loaded two synthetic PPTX files with Chinese speaker notes, detected the `7 天` to `10 天` change, flagged a newly inserted slide with empty notes as To review, and displayed no console errors. The one-deck sample, page-match confirmation, status changes, reading mode and JSON project import were exercised. A 390 px viewport had no horizontal overflow. ZIP XML integrity and notes extraction were checked with the synthetic fixture; `node --test tests/ppt-notes.test.mjs tests/csv-excel.test.mjs` passed. The in-app browser reported that HTML export was created, but native download completion was not independently confirmed there. See [PPT-NOTES.md](PPT-NOTES.md) for scope and file boundaries.
+
 CSV to Excel was added locally on 2026-09-30. Its current checks and remaining release checks are documented in [CSV-EXCEL.md](CSV-EXCEL.md); the original six-tool checks below predate this addition.
 
 - Homepage: category filtering, search and empty-result state checked in the browser.
