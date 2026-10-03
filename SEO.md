@@ -1,5 +1,9 @@
 # UnjamKit search visibility
 
+## PPT Notes Compare addition (2026-10-03)
+
+`/ppt-notes/` is a browser-only page for comparing PowerPoint speaker notes and preparing a recording checklist, with one-deck notes export as a second entry. The homepage links to it, and the canonical page is included in the sitemap. The visible page names matching uncertainty, file limits and the difference between a text change and a rerecording decision.
+
 ## CSV to Excel addition (local, 2026-09-30)
 
 `/csv-to-excel/` targets "CSV to Excel without losing leading zeros" and related searches about long IDs and SKU values changing when Excel opens a CSV. Its visible introduction and first FAQ explain the key timing: Excel can save a CSV as XLSX, but Save As cannot restore an identifier already changed during CSV import. The page also names Excel's built-in Text import as a valid alternative and limits this tool's promise to preserving values present in the original CSV. The title, description, social metadata, H1, homepage card and WebApplication schema reflect that same behavior. This addition has not yet been published.
@@ -15,6 +19,7 @@ This change improves the existing homepage and all six tool pages. It targets co
 | /image-fit/ | compress image to 200 KB; compress image to 100 KB; image size limit | JPG/PNG/WebP input to JPEG; maximum width |
 | /pdf-stack/ | merge PDFs; reorder PDF pages | rotate pages; extract selected pages into one PDF |
 | /list-match/ | compare two lists; find missing items | compare pasted spreadsheet columns; common/unique values |
+| /ppt-notes/ | compare PowerPoint speaker notes | extract notes; recording checklist; script export |
 | /qr-code/ | free static QR code generator | logo, frames, PNG, browser print-to-PDF |
 | /wifi-qr-code/ | Wi-Fi QR code generator | guest Wi-Fi sharing |
 
