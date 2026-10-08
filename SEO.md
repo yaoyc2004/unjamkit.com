@@ -1,5 +1,9 @@
 # UnjamKit search visibility
 
+## HEIC Convert addition (2026-10-08)
+
+`/heic-to-jpg/` converts HEIC/HEIF photos to JPG or one combined PDF in the browser. Main intent: "HEIC to JPG" (iPhone photos a PC, portal or form will not open). Secondary: "HEIC to PDF", "convert multiple HEIC to JPG", combining phone photos of receipts or documents into one PDF. The URL, title, H1, description, social metadata and homepage card use that wording. Visible content adds steps, two use cases, an eight-question FAQ (JPG, PDF, privacy, quality, metadata, Live Photos/bursts/HDR, mixing JPG/PNG, iPhone's own settings) and related links to Image Fit and PDF Stack, which also link back. JSON-LD adds WebPage, BreadcrumbList and a free WebApplication with a feature list matching the controls. No FAQPage markup. The homepage ItemList and sitemap include the page.
+
 ## PPT Notes Compare addition (2026-10-03)
 
 `/ppt-notes/` is a browser-only page for comparing PowerPoint speaker notes and preparing a recording checklist, with one-deck notes export as a second entry. The homepage links to it, and the canonical page is included in the sitemap. The visible page names matching uncertainty, file limits and the difference between a text change and a rerecording decision.
@@ -22,6 +26,7 @@ This change improves the existing homepage and all six tool pages. It targets co
 | /pdf-stack/ | merge PDFs; reorder PDF pages | rotate pages; extract selected pages into one PDF |
 | /list-match/ | compare two lists; find missing items | compare pasted spreadsheet columns; common/unique values |
 | /ppt-notes/ | compare PowerPoint speaker notes | extract notes; recording checklist; script export |
+| /heic-to-jpg/ | HEIC to JPG | HEIC to PDF; batch HEIC conversion; phone photos into one PDF |
 | /qr-code/ | free static QR code generator | logo, frames, PNG, browser print-to-PDF |
 | /wifi-qr-code/ | Wi-Fi QR code generator | guest Wi-Fi sharing |
 
