@@ -12,6 +12,7 @@ Free browser tools for everyday office snags. Small fixes. Back to work.
 | Wi-Fi Share | Create Wi-Fi QR codes for guests |
 | CSV to Excel | Preserve CSV identifiers as explicit text in a checked XLSX |
 | PPT Notes Compare | Compare PPTX speaker notes and make a recording checklist |
+| HEIC Convert | Convert HEIC photos to JPG or combine them into one PDF |
 
 This is the initial beta version. See [VALIDATION.md](VALIDATION.md) for checks and compatibility boundaries.
 
@@ -37,5 +38,7 @@ CSV to Excel: UTF-8 CSV up to 10 MB, 50,000 data records plus an optional header
 
 PPT Notes Compare: one or two standard PPTX files up to 30 MB and 500 slides each. It extracts standard speaker-note placeholders, compares notes, offers manual slide pairing and review decisions, checks blank/repeated notes and chosen old terms, and exports a local HTML checklist, text scripts or a JSON project for manual resume. It does not render slide visuals or compare media. This page intentionally does not load analytics; its document CSP blocks connections. See PPT-NOTES.md for behavior and validation.
 
+
+HEIC Convert: up to 50 HEIC/HEIF photos per batch, 50 MB each, 400 MB total, 100 megapixels per photo. Photos are decoded by libheif (WebAssembly) in a local worker, then saved as JPG (one file, or a ZIP for several) or one PDF with a photo per page (photo size, A4 or US Letter). JPG, PNG and WebP can join the same batch. Only the primary image is converted; metadata (including GPS), Live Photo motion, HDR and transparency are not kept. This page intentionally does not load analytics; its document CSP blocks connections.
 
 Contact and tool requests: the contact page uses a separately configured form service. It sends the visitor's message and optional contact details; tool processing remains unchanged. Receiving-service setup is required before publishing the form. See [CONTACT.md](CONTACT.md).
