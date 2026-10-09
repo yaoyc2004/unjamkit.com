@@ -1,7 +1,7 @@
 # Bundled browser dependencies
 
 - pdf-lib 1.17.1, MIT, https://github.com/Hopding/pdf-lib ; copied from the bundled workspace runtime. License: pdf-lib-LICENSE.md.
-- PDF.js (pdfjs-dist) 5.6.205, Apache-2.0, https://github.com/mozilla/pdf.js ; copied from the bundled workspace runtime. License: pdfjs/LICENSE. Local resources include CMaps, standard fonts, WebAssembly decoders and ICC profiles.
+- PDF.js (pdfjs-dist) 5.6.205, Apache-2.0, https://github.com/mozilla/pdf.js ; copied from the bundled workspace runtime. License: pdfjs/LICENSE. Local resources include CMaps, standard fonts, WebAssembly decoders and ICC profiles. `pdfjs-compat.mjs` (loaded before PDF.js) and `pdfjs-worker.mjs` (the worker entry that loads it first) polyfill `Map/WeakMap.getOrInsertComputed` and `Uint8Array` hex/base64 helpers, which PDF.js 5.6 calls unconditionally; without them pages do not render in browsers older than Chrome 145.
 - QRCode.js, https://github.com/davidshimjs/qrcodejs ; reused from the existing JustMakeQR preview. License: qrcode-LICENSE.txt.
 
 All libraries are served from this directory. No CDN requests are required.
