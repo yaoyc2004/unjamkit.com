@@ -1,7 +1,8 @@
+import './vendor/pdfjs-compat.mjs';
 import * as pdfjs from './vendor/pdfjs/pdf.mjs';
 import {$,message,download} from './common.mjs';
 import {buildPdf} from './pdf-core.mjs';
-pdfjs.GlobalWorkerOptions.workerSrc=new URL('./vendor/pdfjs/pdf.worker.mjs',import.meta.url).href;
+pdfjs.GlobalWorkerOptions.workerSrc=new URL('./vendor/pdfjs-worker.mjs',import.meta.url).href;
 const assets=new URL('./vendor/pdfjs/',import.meta.url).href;
 let documents=[],pages=[],revision=0,nextId=1,busy=false,totalBytes=0,dragId=null;
 const active=()=>pages.filter(p=>p.include);

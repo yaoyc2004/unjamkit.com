@@ -26,3 +26,10 @@ export function imagePlan(width,height,maxWidth=0){
   const ratio=maxWidth>0?Math.min(1,maxWidth/width):1;
   return {width:Math.max(1,Math.round(width*ratio)),height:Math.max(1,Math.round(height*ratio))};
 }
+export const PDF_QUALITIES=[.92,.82,.72,.62,.52,.42,.34,.26,.19,.13,.08];
+export function pickQuality(totals,limit){return totals.findIndex(total=>total<=limit);}
+export function lowerDpi(dpi,limit,smallest){return Math.floor(dpi*Math.min(.85,Math.sqrt(limit/smallest)*.93));}
+export function pdfRenderScale(widthPt,heightPt,dpi,maxPixels=25000000){
+  const scale=dpi/72,pixels=widthPt*scale*heightPt*scale;
+  return pixels>maxPixels?scale*Math.sqrt(maxPixels/pixels):scale;
+}
