@@ -4,6 +4,8 @@
 
 `/batch-rename/` renames up to 200 files in the browser with rules (prefix, suffix, find and replace, new text, numbering) or a two-column old → new list pasted from Excel or loaded as CSV (UTF-8 or GBK). Every new name is previewed and downloads are blocked on duplicates (case-insensitive), Windows-invalid characters, reserved names, trailing dots/spaces and, in list mode, files without a row. Output is a stored ZIP of the original bytes under the new names plus `rename-list.csv`. Main intent: "batch rename files", "rename files from Excel list". Secondary: "add sequential numbers to file names", "bulk rename without installing software". Facts table, FAQPage, WebApplication JSON-LD, homepage card and ItemList, sitemap, llms.txt and About list updated. CSP with `connect-src 'none'` and no analytics, like the other file pages.
 
+Same day, extended: saved rule templates (localStorage + JSON export/import), drag/↑↓ manual order, remove first/last N characters, letter case, regex find/replace, `{name}`/`{date}`/`{modified}` placeholders, XLSX name lists (SheetJS loaded on demand), and undo by loading the tool's own rename-list.csv (columns swapped automatically). New guide `/guides/rename-files-from-excel-list/` (PowerShell, cmd ren, Mac Terminal, then the tool), linked from the tool's facts table, guides index, sitemap and llms.txt.
+
 ## GEO pass (2026-10-13)
 
 Aimed at AI answer engines (ChatGPT search, Copilot, Perplexity, Google AI features) as well as classic search. Changes:

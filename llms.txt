@@ -23,6 +23,7 @@ Each tool page states its limits (formats, sizes, what it does not do). Visit st
 - [How to compress an image to 200 KB for an online form](https://unjamkit.com/guides/compress-image-to-200kb/)
 - [How to compress a PDF for an upload portal](https://unjamkit.com/guides/compress-pdf-for-upload/)
 - [How to compare speaker notes between two PowerPoint versions](https://unjamkit.com/guides/compare-powerpoint-speaker-notes/)
+- [How to Rename Files From an Excel List (Old Name to New Name)](https://unjamkit.com/guides/rename-files-from-excel-list/)
 
 ## About
 

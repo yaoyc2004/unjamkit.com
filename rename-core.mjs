@@ -24,24 +24,50 @@ export function orderFiles(files, order = 'added') {
   return list.map((item) => item.index);
 }
 
-function replaceAll(text, find, replacement, matchCase) {
-  if (!find) return text;
-  if (matchCase) return text.split(find).join(replacement);
-  const escaped = find.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  return text.replace(new RegExp(escaped, 'gi'), () => replacement);
+const pad = (n) => String(n).padStart(2, '0');
+export const isoDate = (date) => date.getFullYear() + '-' + pad(date.getMonth() + 1) + '-' + pad(date.getDate());
+
+// Compile Find into a RegExp. Plain text is escaped; "Use regular expression" passes it through. Throws on an invalid pattern.
+export function findPattern(find, {regex = false, matchCase = false} = {}) {
+  if (!find) return null;
+  const source = regex ? find : find.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  try { return new RegExp(source, 'gu' + (matchCase ? '' : 'i')); }
+  catch { throw new Error('The regular expression in Find is not valid.'); }
 }
 
+const CASES = {
+  keep: (t) => t,
+  lower: (t) => t.toLowerCase(),
+  upper: (t) => t.toUpperCase(),
+  title: (t) => t.toLowerCase().replace(/(^|[\s_\-.])(\p{L})/gu, (_, sep, ch) => sep + ch.toUpperCase()),
+};
+
 // Rules mode. Rules change the name before the extension; the extension is kept.
-// rules: {base: 'keep'|'text', text, find, replace, matchCase, prefix, suffix, number: 'none'|'before'|'after', start, digits, sep, extCase: 'keep'|'lower'}
-export function ruleNames(files, rules, order = files.map((_, i) => i)) {
+// Steps, in order: base name, remove characters, find/replace, case, prefix/suffix, numbering.
+// {name}, {date} (today) and {modified} (file date) work in New text, Replace with, prefix and suffix.
+// rules: {base: 'keep'|'text', text, removeFirst, removeLast, find, replace, regex, matchCase, caseMode, prefix, suffix,
+//         number: 'none'|'before'|'after', start, digits, sep, extCase: 'keep'|'lower'}
+export function ruleNames(files, rules, order = files.map((_, i) => i), today = new Date()) {
   const names = new Array(files.length);
   const start = Number.isFinite(Number(rules.start)) ? Math.trunc(Number(rules.start)) : 1;
   const digits = Math.min(6, Math.max(1, Math.trunc(Number(rules.digits)) || 1));
+  const cut = (value) => Math.max(0, Math.trunc(Number(value)) || 0);
+  const removeFirst = cut(rules.removeFirst), removeLast = cut(rules.removeLast);
+  const pattern = findPattern(nfc(rules.find || ''), {regex: !!rules.regex, matchCase: !!rules.matchCase});
+  const changeCase = CASES[rules.caseMode] || CASES.keep;
   order.forEach((fileIndex, position) => {
-    const {stem, ext} = splitName(nfc(files[fileIndex].name));
-    let name = rules.base === 'text' ? nfc(rules.text || '') : stem;
-    name = replaceAll(name, nfc(rules.find || ''), nfc(rules.replace || ''), !!rules.matchCase);
-    name = nfc(rules.prefix || '') + name + nfc(rules.suffix || '');
+    const file = files[fileIndex];
+    const {stem, ext} = splitName(nfc(file.name));
+    const vars = {name: stem, date: isoDate(today), modified: isoDate(new Date(file.lastModified || today))};
+    const fill = (text) => nfc(text || '').replace(/\{(name|date|modified)\}/gi, (_, k) => vars[k.toLowerCase()]);
+    let name = rules.base === 'text' ? fill(rules.text) : stem;
+    const chars = [...name];
+    name = chars.slice(removeFirst, Math.max(removeFirst, chars.length - removeLast)).join('');
+    if (pattern) {
+      const replacement = fill(rules.replace);
+      name = rules.regex ? name.replace(pattern, replacement) : name.replace(pattern, () => replacement);
+    }
+    name = fill(rules.prefix) + changeCase(name) + fill(rules.suffix);
     if (rules.number === 'before' || rules.number === 'after') {
       const n = start + position;
       const number = (n < 0 ? '-' : '') + String(Math.abs(n)).padStart(digits, '0');
@@ -52,6 +78,48 @@ export function ruleNames(files, rules, order = files.map((_, i) => i)) {
   });
   return names;
 }
+
+// Saved rule templates: a small JSON file people can keep or share. Only known keys with plain values are read back.
+export const RULE_KEYS = {
+  base: ['keep', 'text'], text: 'string', removeFirst: 'number', removeLast: 'number', find: 'string', replace: 'string',
+  regex: 'boolean', matchCase: 'boolean', caseMode: ['keep', 'lower', 'upper', 'title'], prefix: 'string', suffix: 'string',
+  number: ['none', 'before', 'after'], order: ['added', 'name', 'date'], start: 'number', digits: 'number', sep: ['_', '-', ' ', ''],
+  extCase: ['keep', 'lower'],
+};
+const TEMPLATE_APP = 'unjamkit-batch-rename';
+
+export function cleanRules(input) {
+  const rules = {};
+  if (!input || typeof input !== 'object') return rules;
+  for (const [k, type] of Object.entries(RULE_KEYS)) {
+    let v = input[k];
+    if (v === undefined) continue;
+    if (type === 'number') { v = Number(v); if (Number.isFinite(v)) rules[k] = Math.trunc(Math.max(-1e6, Math.min(1e6, v))); }
+    else if (type === 'string') { if (typeof v === 'string') rules[k] = v.slice(0, 200); }
+    else if (type === 'boolean') { if (typeof v === 'boolean') rules[k] = v; }
+    else if (type.includes(v)) rules[k] = v;
+  }
+  return rules;
+}
+
+export function templatesJson(templates) {
+  return JSON.stringify({app: TEMPLATE_APP, version: 1, templates: templates.map((t) => ({name: t.name, rules: cleanRules(t.rules)}))}, null, 2);
+}
+
+export function parseTemplates(text) {
+  let data;
+  try { data = JSON.parse(String(text).replace(/^\uFEFF/, '')); } catch { throw new Error('This is not a Batch Rename template file.'); }
+  if (!data || data.app !== TEMPLATE_APP || !Array.isArray(data.templates)) throw new Error('This is not a Batch Rename template file.');
+  return data.templates.slice(0, 100)
+    .filter((t) => t && typeof t.name === 'string' && t.name.trim())
+    .map((t) => ({name: t.name.trim().slice(0, 60), rules: cleanRules(t.rules)}));
+}
+
+// Undo: a rename list made by this tool has the header "Original name, New name". Swapping the columns turns it into new -> original.
+export const isRenameList = (rows) => !!rows.length && /^'?original name$/i.test(rows[0][0] || '') && /^'?new name$/i.test(rows[0][1] || '');
+export const swapColumns = (rows) => rows.map(([a = '', b = '', ...rest]) => [b, a, ...rest]);
+export const unquoteFormula = (cell) => cell.replace(/^'(?=[=+@\t\r])/, '');
+export const toTsv = (rows) => rows.map((cells) => cells.map((c) => String(c ?? '').replace(/[\t\r\n]+/g, ' ')).join('\t')).join('\n');
 
 // Parse pasted or loaded CSV/TSV text (Excel copy-paste is tab-separated). Quoted fields may contain the delimiter, quotes and line breaks.
 export function parseTable(text) {

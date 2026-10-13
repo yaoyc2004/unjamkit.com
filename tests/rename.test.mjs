@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {splitName, orderFiles, ruleNames, parseTable, listNames, checkName, buildPlan, mappingCsv, listName, zipStoreEntries, crc32} from '../rename-core.mjs';
+import {splitName, orderFiles, ruleNames, parseTable, listNames, checkName, buildPlan, mappingCsv, listName, zipStoreEntries, crc32, findPattern, cleanRules, templatesJson, parseTemplates, isRenameList, swapColumns, unquoteFormula, toTsv} from '../rename-core.mjs';
 
 const f = (name, lastModified = 0, size = 10) => ({name, lastModified, size});
 
@@ -115,4 +115,42 @@ test('the ZIP holds the original bytes under the new UTF-8 names', async () => {
     p += 46 + nameLength;
   }
   assert.deepEqual(found, [['客户A_报价_001.pdf', [...one]], ['b.bin', [...two]]]);
+});
+
+test('rules remove characters, change case and fill {name}, {date} and {modified}', () => {
+  const today = new Date(2026, 9, 13), file = {name: 'IMG_0042 site PHOTO.jpg', lastModified: new Date(2026, 0, 5, 12).getTime()};
+  assert.deepEqual(ruleNames([file], {base: 'keep', removeFirst: 4, caseMode: 'title'}, [0], today), ['0042 Site Photo.jpg']);
+  assert.deepEqual(ruleNames([file], {base: 'keep', removeLast: 6, caseMode: 'lower'}, [0], today), ['img_0042 site.jpg']);
+  assert.deepEqual(ruleNames([file], {base: 'text', text: 'Site_{modified}', prefix: '{date}_'}, [0], today), ['2026-10-13_Site_2026-01-05.jpg']);
+  assert.deepEqual(ruleNames([file], {base: 'text', text: '{NAME}-copy', caseMode: 'upper'}, [0], today), ['IMG_0042 SITE PHOTO-COPY.jpg']);
+  assert.deepEqual(ruleNames([file], {base: 'keep', removeFirst: 99}, [0], today), ['.jpg']);
+  assert.deepEqual(ruleNames([{name: '报价单_v2.pdf'}], {base: 'keep', removeFirst: 2}, [0], today), ['单_v2.pdf']);
+});
+
+test('regular expressions can capture and reorder; invalid ones throw a readable error', () => {
+  assert.deepEqual(ruleNames([{name: '2026-10-13_quote.pdf'}], {base: 'keep', find: '^(\\d{4})-(\\d{2})-(\\d{2})_(.+)$', replace: '$4_$3.$2.$1', regex: true}), ['quote_13.10.2026.pdf']);
+  assert.deepEqual(ruleNames([{name: 'a.b.c.txt'}], {base: 'keep', find: '.', replace: '-'}), ['a-b-c.txt']);
+  assert.throws(() => findPattern('(', {regex: true}), /not valid/);
+  assert.equal(findPattern(''), null);
+});
+
+test('templates round-trip and drop unknown or unsafe values', () => {
+  const json = templatesJson([{name: 'Quotes', rules: {prefix: 'Q_', number: 'after', digits: 3, regex: true, evil: '<script>', caseMode: 'shout', start: '5'}}]);
+  const [t] = parseTemplates(json);
+  assert.equal(t.name, 'Quotes');
+  assert.deepEqual(t.rules, {regex: true, prefix: 'Q_', number: 'after', start: 5, digits: 3});
+  assert.throws(() => parseTemplates('{"templates": []}'), /not a Batch Rename template/);
+  assert.throws(() => parseTemplates('nope'), /not a Batch Rename template/);
+  assert.deepEqual(cleanRules(null), {});
+});
+
+test('a rename list from this tool can be swapped back to undo', () => {
+  const rows = parseTable(mappingCsv([{from: 'scan17.pdf', to: 'Client A.pdf', size: 3}, {from: '=x.pdf', to: 'b.pdf', size: 1}]));
+  assert.ok(isRenameList(rows));
+  const swapped = swapColumns(rows.slice(1)).map((r) => r.map(unquoteFormula));
+  assert.deepEqual(swapped, [['Client A.pdf', 'scan17.pdf', '3'], ['b.pdf', '=x.pdf', '1']]);
+  const out = listNames([{name: 'Client A.pdf'}, {name: 'b.pdf'}], swapped);
+  assert.deepEqual(out.names, ['scan17.pdf', '=x.pdf']);
+  assert.ok(!isRenameList([['old', 'new']]));
+  assert.equal(toTsv([['a\tb', 'c'], ['00123', null]]), 'a b\tc\n00123\t');
 });
