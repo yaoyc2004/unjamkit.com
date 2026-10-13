@@ -1,0 +1,51 @@
+# After GitHub Pages publishes main, tell IndexNow (Bing, Yandex and others) which pages changed.
+name: IndexNow
+
+on:
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      all:
+        description: Submit every URL in sitemap.xml
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 2
+      - name: Submit changed pages
+        env:
+          SUBMIT_ALL: ${{ github.event_name == 'workflow_dispatch' && inputs.all }}
+        run: |
+          set -euo pipefail
+          key_file=$(ls | grep -E '^[0-9a-f]{32}\.txt$' | head -1)
+          key=${key_file%.txt}
+          sitemap_urls=$(grep -o '<loc>[^<]*</loc>' sitemap.xml | sed 's/<\/\?loc>//g')
+          if [ "$SUBMIT_ALL" = "true" ]; then
+            urls="$sitemap_urls"
+          else
+            # Changed index.html files on this push, mapped to their public URLs and kept only if in the sitemap.
+            changed=$(git diff --name-only HEAD^1 HEAD -- '*index.html' 'sitemap.xml' || true)
+            if echo "$changed" | grep -qx 'sitemap.xml'; then urls="$sitemap_urls"; else
+              urls=$(echo "$changed" | grep 'index.html$' | sed -e 's#index.html$##' -e 's#^#https://unjamkit.com/#' | grep -Fxf <(echo "$sitemap_urls") || true)
+            fi
+          fi
+          if [ -z "$urls" ]; then echo "No sitemap pages changed."; exit 0; fi
+          echo "$urls"
+          body=$(jq -n --arg key "$key" --arg loc "https://unjamkit.com/$key_file" --arg urls "$urls" \
+            '{host: "unjamkit.com", key: $key, keyLocation: $loc, urlList: ($urls | split("\n") | map(select(length > 0)))}')
+          status=$(curl -sS -o response.txt -w '%{http_code}' -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' -d "$body")
+          echo "IndexNow HTTP $status"; cat response.txt || true
+          case "$status" in 200|202) ;; *) exit 1 ;; esac

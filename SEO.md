@@ -1,5 +1,19 @@
 # UnjamKit search visibility
 
+## GEO pass (2026-10-13)
+
+Aimed at AI answer engines (ChatGPT search, Copilot, Perplexity, Google AI features) as well as classic search. Changes:
+
+- Image Fit title, description, schema, steps, use cases and FAQ now describe PDF compression too; a FAQ that still said "images only" was corrected.
+- Each tool page has an "at a glance" facts table (input, output, limits, what it does not do, upload, price), a visible "Last updated" date, and `datePublished`/`dateModified`, `publisher` and `featureList` in JSON-LD.
+- Tool pages now add FAQPage markup generated from their visible FAQ. Google limits the FAQ rich result, but Bing and other engines still read it; the earlier "no FAQPage" choice was reversed for that reason.
+- New `/about/` page (who runs the site, how processing works, how to check in the browser's Network panel that files are not uploaded, what is collected) and an `Organization` node on the homepage with `sameAs` links.
+- New `/guides/` with five answer-first articles that cover native fixes before the matching tool: Excel leading zeros, HEIC, getting a photo under 200 KB, shrinking a PDF for a portal, comparing PowerPoint speaker notes.
+- Sitemap carries real `lastmod` dates and the new pages plus `/contact/`. `/llms.txt` summarizes the tools and guides.
+- IndexNow: the key file at the root and `.github/workflows/indexnow.yml` submit changed sitemap pages after each GitHub Pages deployment (run it manually to submit everything).
+
+When a page changes, update its visible date, `dateModified` and the sitemap `lastmod` together.
+
 ## HEIC Convert addition (2026-10-08)
 
 `/heic-to-jpg/` converts HEIC/HEIF photos to JPG or one combined PDF in the browser. Main intent: "HEIC to JPG" (iPhone photos a PC, portal or form will not open). Secondary: "HEIC to PDF", "convert multiple HEIC to JPG", combining phone photos of receipts or documents into one PDF. The URL, title, H1, description, social metadata and homepage card use that wording. Visible content adds steps, two use cases, an eight-question FAQ (JPG, PDF, privacy, quality, metadata, Live Photos/bursts/HDR, mixing JPG/PNG, iPhone's own settings) and related links to Image Fit and PDF Stack, which also link back. JSON-LD adds WebPage, BreadcrumbList and a free WebApplication with a feature list matching the controls. No FAQPage markup. The homepage ItemList and sitemap include the page.
