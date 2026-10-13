@@ -10,6 +10,7 @@ Each tool page states its limits (formats, sizes, what it does not do). Visit st
 - [HEIC Convert](https://unjamkit.com/heic-to-jpg/): convert iPhone HEIC/HEIF photos to JPG, or combine up to 50 photos into one PDF.
 - [CSV to Excel](https://unjamkit.com/csv-to-excel/): convert a CSV to an XLSX with every cell stored as text, so leading zeros and long IDs are kept; the workbook is checked against the CSV before download.
 - [PPT Notes Compare](https://unjamkit.com/ppt-notes/): compare speaker notes between two versions of a PowerPoint .pptx (slides paired by content), export a recording checklist, or extract all notes from one deck.
+- [Batch Rename](https://unjamkit.com/batch-rename/): rename up to 200 files at once with a prefix, find and replace and numbering, or from a two-column old-name/new-name list pasted from Excel; duplicate and invalid names are blocked; download renamed copies as a ZIP with a CSV list of the changes.
 - [PDF Stack](https://unjamkit.com/pdf-stack/): merge PDFs, reorder, rotate and extract pages.
 - [Clean Copy](https://unjamkit.com/clean-copy/): remove unwanted line breaks from text copied out of a PDF while keeping paragraphs.
 - [List Match](https://unjamkit.com/list-match/): compare two lists to find shared items and items missing from either list.
